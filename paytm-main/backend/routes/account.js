@@ -60,7 +60,8 @@ accountRouter.post("/transfer", authMiddleware,async (req,res) => {
     if (!toAccount){
         await session.abortTransaction();
         return res.status(400).json({
-            "message" : "Invalid account"
+            "details" : req.body,
+            "message" : "Invalid account Error here"
         })
     }
 

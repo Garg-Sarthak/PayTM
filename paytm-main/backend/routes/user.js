@@ -107,7 +107,7 @@ userRouter.put("/", authMiddleware, async (req, res) => {
 
 userRouter.get("/bulk",async (req,res)=>{
 
-    const filter = req.query.filter;
+    const filter = req.query.filter || "";
     console.log(filter);
 
     if (filter){
@@ -119,7 +119,8 @@ userRouter.get("/bulk",async (req,res)=>{
             users : usersFound.map(user => ({
                 username : user.username,
                 firstName : user.firstName,
-                lastName : user.lastName
+                lastName : user.lastName,
+                id : user._id
             }))
         });
     }

@@ -5,12 +5,15 @@ import Heading from "../components/Heading";
 import InputBox from "../components/InputBox";
 import Subheading from "../components/Subheading";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+// import { response } from "express";
 
 export default function Signup(){
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
+    const navigate = useNavigate();
 
     return <div className="bg-slate-300 h-screen flex justify-center">
             <div className="flex flex-col justify-center">
@@ -31,14 +34,17 @@ export default function Signup(){
                     setPassword(e.target.value);
                     // console.log(password);
                 }}></InputBox>
-                <Button2 text = {"Sign Up"} onClick={()=>{
-                    console.log(password);
-                    axios.post("http://localhost:3000/api/v1/user/signup",{
+                <Button2 text = {"Sign Up"} onClick={async ()=>{
+                    // console.log(password);
+                    const signupRequest = await axios.post("http://localhost:3000/api/v1/user/signup",{
                         username,
                         firstName,
                         lastName,
                         password
                     })
+                    localStorage.setItem("token",signupRequest.data.token)
+                    navigate("/dashboard")
+                    
                 }}></Button2> 
                 <BottomWarning text = {"Alreay have an account?"} textU={"Sign In"} link={"https://www.google.com"}></BottomWarning>
             </div>
