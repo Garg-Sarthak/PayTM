@@ -3,8 +3,10 @@ import AppBar from "../components/AppBar";
 import Balance from "../components/Balance";
 import Users from "../components/Users";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard(){
+    const navigate = useNavigate();
     const [balance,setBalance] = useState(0);
     useEffect(function(){
         console.log(localStorage.getItem("username"));
@@ -21,7 +23,11 @@ export default function Dashboard(){
     },[balance])
     return <div>
         {/* <AppBar labelLeft={"Payments App"} labelRight={"Hello, User"} userSymbol={"U"}/> */}
-        <AppBar label={"PayTM App"} iconLetter={"U"}/>
+        <AppBar label={"PayTM App"} iconLetter={"U"} onClick={() => {
+            navigate("/signin");
+            localStorage.removeItem("token");
+            localStorage.removeItem("username");
+        }}/>
         <Balance balance={balance}/>
         <Users/>
     </div>

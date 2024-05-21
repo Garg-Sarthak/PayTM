@@ -1,9 +1,9 @@
-import { useSearchParams } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import axios from "axios";
 import { useState } from "react";
 
 export default function SendMoney(){
-
+    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const [amount, setAmount] = useState(0);
     const id = searchParams.get("id");
@@ -48,6 +48,8 @@ export default function SendMoney(){
                                 Authorization: "Bearer " + localStorage.getItem("token")
                             }
                         })
+                        window.alert("Amount Successfully Transfered");
+                        navigate("/dashboard")
                     }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
                         Initiate Transfer
                     </button>

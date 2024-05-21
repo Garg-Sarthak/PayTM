@@ -60,7 +60,7 @@ userRouter.post('/signup',async (req,res,next)=>{
 userRouter.post('/signin',async (req,res)=>{
     
     if (!userSigninObject.safeParse(req.body).success){
-        res.status(411).json({
+        return res.status(411).json({
             "msg" : "Incorrect input"
         })
     }
@@ -108,7 +108,6 @@ userRouter.put("/", authMiddleware, async (req, res) => {
 userRouter.get("/bulk",async (req,res)=>{
 
     const filter = req.query.filter || "";
-    console.log(filter);
 
     if (filter){
         const usersFound = await User.find({
