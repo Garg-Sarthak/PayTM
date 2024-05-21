@@ -12,11 +12,10 @@ const accountRouter = express.Router();
 module.exports = {accountRouter};
 mongoose.connect(`mongodb+srv://Database1:${db_pass}@cluster0.vyaqywh.mongodb.net/paytm`)
 
-accountRouter.get("/balance",async (req,res)=>{
+accountRouter.get("/balance",authMiddleware,async (req,res)=>{
 
     const userFound = await User.find({
-        username : req.body.username,
-        password : req.body.password
+        username : req.headers.username
     })
     if (!userFound.length){
         return res.status(403).json({

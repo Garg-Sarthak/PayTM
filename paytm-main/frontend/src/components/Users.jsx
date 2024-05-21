@@ -15,7 +15,6 @@ export default function Users(){
         .then(response => {
             // setUsers(response.data.user);
             setUsers(response.data.users);
-            console.log(response.data.users);
         })
     },[filter])
 

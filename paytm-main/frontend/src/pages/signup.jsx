@@ -42,6 +42,7 @@ export default function Signup(){
                         password
                     })
                     localStorage.setItem("token",signupRequest.data.token)
+                    localStorage.setItem("username",username);
                     navigate("/dashboard")
                     
                 }}></Button2> 

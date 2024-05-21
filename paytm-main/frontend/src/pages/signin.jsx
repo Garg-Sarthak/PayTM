@@ -32,6 +32,7 @@ export default function Signin(){
                         password
                     })
                     localStorage.setItem("token",response.data.token);
+                    localStorage.setItem("username",username);
                     navigate("/dashboard");
                 }}></Button2> 
                 <BottomWarning text={"Don't have an account?"} textU = {"Sign Up"} link = {"https://www.google.com"} onClick={() => {
