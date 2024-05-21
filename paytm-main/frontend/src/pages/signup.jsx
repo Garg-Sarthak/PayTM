@@ -23,7 +23,6 @@ export default function Signup(){
 
                 <InputBox text = {"First Name"} inputValue={"John"} onChange={ e => {
                     setFirstName(e.target.value);
-                    // console.log(firstName);
                 }}></InputBox>
                 <InputBox text = {"Last Name"} inputValue={"Doe"} onChange={ e => {
                     setLastName(e.target.value);}}></InputBox>
@@ -46,7 +45,9 @@ export default function Signup(){
                     navigate("/dashboard")
                     
                 }}></Button2> 
-                <BottomWarning text = {"Alreay have an account?"} textU={"Sign In"} link={"https://www.google.com"}></BottomWarning>
+                <BottomWarning text = {"Alreay have an account?"} textU={"Sign In"} link={"https://www.google.com"} onClick={() => {
+                    navigate("/signin");
+                }}/>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 
-export default function BottomWarning({text,textU,link}){
+export default function BottomWarning({text,textU,onClick}){
     return <div>
-        <span>{text} <a href = {link}><u>{textU}</u></a></span>
+        <span>{text} <u className ={"hover:text-slate-500 cursor-pointer"} onClick={onClick}>{textU}</u></span>
     </div>
 }
